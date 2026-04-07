@@ -1,0 +1,45 @@
+# Restricted Zone Monitor configuration.
+# Relative paths are resolved against the project root (the folder with main.py).
+# Every key is optional; omitted keys fall back to the defaults shown here.
+
+model:
+  path: models/yolov8n.pt     # local weights only; a missing file is an error, never a download
+  device: auto                # auto | cpu | cuda | mps   (auto tries cuda, then mps, then cpu)
+  confidence: 0.25            # minimum detection score passed to the tracker (see README: tuning)
+  iou: 0.5                    # NMS IoU threshold
+  classes: [person]           # COCO class names to keep, e.g. [person, forklift] if your model has it
+  image_size: 640             # inference size in pixels (multiple of 32)
+  half: false                 # FP16 inference; only applied on CUDA, ignored with a warning elsewhere
+
+tracking:
+  tracker: config/bytetrack.yaml   # Ultralytics tracker config (or the built-in names bytetrack.yaml / botsort.yaml)
+  entry_confirm_seconds: 0.3       # an object must stay inside this long before an entry is recorded
+  exit_grace_seconds: 1.5          # how long an object may be unseen/outside before an exit is recorded
+  track_timeout_seconds: 5.0       # forget a track after this long without any detection (>= exit grace)
+
+video:
+  source: 0                   # camera index, video file path, or rtsp:// / http:// stream URL
+  width: null                 # requested camera resolution (cameras may ignore it); null = camera default
+  height: null
+  process_every_n_frames: 1   # run detection on every Nth frame; the rest are displayed with the last overlay
+
+zones:
+  file: data/zones/default.json
+  anchor: bottom_center       # point of the box tested against zones: bottom_center (feet) or center
+
+storage:
+  database: data/events.db
+  export_dir: reports
+
+display:
+  width: 960                  # width of the video area in the window; the frame is scaled to fit
+  panel_width: 320
+  recent_events: 8
+
+performance:
+  warmup_frames: 10           # processed frames excluded from timing statistics
+  window_size: 120            # number of recent samples used for rolling statistics
+
+logging:
+  level: INFO
+  file: logs/monitor.log      # operational log; events go to the database, not here

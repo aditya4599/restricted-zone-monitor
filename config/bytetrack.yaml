@@ -1,0 +1,11 @@
+# ByteTrack settings passed to Ultralytics (copied from the Ultralytics defaults
+# so they are visible and editable). Frame counts refer to *processed* frames,
+# so with video.process_every_n_frames > 1 a buffer of 30 covers more real time.
+
+tracker_type: bytetrack
+track_high_thresh: 0.25   # detections above this are matched in the first association pass
+track_low_thresh: 0.1     # second-pass threshold; only matters if model.confidence is set below 0.25
+new_track_thresh: 0.25    # minimum score to start a new track
+track_buffer: 30          # processed frames a lost track is kept for possible re-association
+match_thresh: 0.8         # association cost threshold
+fuse_score: True          # combine detection score with IoU when matching
