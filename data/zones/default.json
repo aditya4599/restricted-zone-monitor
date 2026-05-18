@@ -1,0 +1,24 @@
+{
+  "coordinate_system": "normalized (0..1) relative to the source frame, origin top-left",
+  "zones": [
+    {
+      "id": "machinery_area",
+      "name": "Machinery Area",
+      "type": "restricted",
+      "polygon": [[0.05, 0.55], [0.35, 0.5], [0.4, 0.95], [0.05, 0.95]]
+    },
+    {
+      "id": "warehouse_entrance",
+      "name": "Warehouse Entrance",
+      "type": "occupancy",
+      "polygon": [[0.42, 0.45], [0.62, 0.45], [0.66, 0.95], [0.4, 0.95]]
+    },
+    {
+      "id": "equipment_room",
+      "name": "Equipment Room",
+      "type": "loitering",
+      "loiter_seconds": 10.0,
+      "polygon": [[0.68, 0.4], [0.95, 0.4], [0.95, 0.95], [0.7, 0.95]]
+    }
+  ]
+}
