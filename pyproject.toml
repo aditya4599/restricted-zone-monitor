@@ -1,0 +1,28 @@
+[project]
+name = "restricted-zone-monitor"
+version = "0.2.0"
+description = "YOLOv8 + ByteTrack monitoring of polygonal zones with SQLite event storage"
+requires-python = ">=3.10"
+readme = "README.md"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+markers = [
+    "model: needs the YOLO weights and ultralytics/torch installed (deselect with -m 'not model')",
+]
+
+[tool.ruff]
+line-length = 130
+target-version = "py310"
+src = ["src", "tests", "scripts"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+ignore = ["B008"]  # EventFilter() as a default argument is an immutable frozen dataclass
+
+[tool.ruff.lint.isort]
+known-first-party = ["restricted_zone_monitor", "conftest"]

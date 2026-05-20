@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+
+# Environments
+.venv/
+venv/
+.env
+
+# Generated at runtime
+data/events.db
+data/events.db-wal
+data/events.db-shm
+data/zones/*.tmp
+logs/
+reports/
+
+# Ultralytics writes these when it is run directly
+runs/
+
+# Editors / OS
+.DS_Store
+.idea/
+.vscode/

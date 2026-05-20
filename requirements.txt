@@ -1,0 +1,8 @@
+# Tested with Python 3.13, ultralytics 8.4, torch 2.x (CPU). See README for Apple Silicon notes.
+ultralytics>=8.1
+torch>=2.0
+opencv-python>=4.8
+numpy>=1.24
+PyYAML>=6.0
+lap>=0.5          # linear assignment used by ByteTrack; listed so Ultralytics doesn't pip-install it at runtime
+matplotlib>=3.7   # charts for `main.py report --charts`
